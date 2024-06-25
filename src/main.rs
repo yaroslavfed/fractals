@@ -10,7 +10,7 @@ fn main() {
     let target_y = 0.44967917993930356;
     let max_iters = 5000;
 
-    for scale_coefficient in 0..10 {
+    for scale_coefficient in 1..10 {
         let scale = 500_000.0 * scale_coefficient as f64;
 
         let x_min = target_x - (1.0 / scale);
