@@ -10,23 +10,25 @@ fn main() {
     let target_y = 0.44967917993930356;
     let max_iters = 5000;
 
-    let scale = 500_000.0;
+    for scale_coefficient in 0..10 {
+        let scale = 500_000.0 * scale_coefficient as f64;
 
-    let x_min = target_x - (1.0 / scale);
-    let x_max = target_x + (1.0 / scale);
-    let y_min = target_y - (1.0 / scale);
-    let y_max = target_y + (1.0 / scale);
+        let x_min = target_x - (1.0 / scale);
+        let x_max = target_x + (1.0 / scale);
+        let y_min = target_y - (1.0 / scale);
+        let y_max = target_y + (1.0 / scale);
 
-    generate_set(
-        format!("fractal_{}.png", scale).to_string(),
-        max_iters,
-        x_min,
-        y_min,
-        x_max,
-        y_max,
-        vec!["#1C448E", "#6F8695", "#CEC288", "#FFE381", "#DBFE87"],
-        resolution,
-    );
+        generate_set(
+            format!("fractal_{}.png", scale).to_string(),
+            max_iters,
+            x_min,
+            y_min,
+            x_max,
+            y_max,
+            vec!["#1C448E", "#6F8695", "#CEC288", "#FFE381", "#DBFE87"],
+            resolution,
+        );
+    }
 }
 
 fn num_iters(cx: f64, cy: f64, max_iters: u32) -> u32 {
